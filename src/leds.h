@@ -1,5 +1,6 @@
 #include "stdint.h"
 #include "string.h"
+#include "stdio.h"
 
 /**
  * @brief Apaga todos los leds en el reinicio
@@ -39,18 +40,16 @@ void LedsTurnAllOff(void);
 /**
  * @brief Prende multiples leds 
  * 
- * @param arrayleds 
- * @return char* 
+ * @param arrayleds  
  */
-char* LedsTurnOnMultiple(char *arrayleds);
+void LedsTurnOnMultiple(char *arrayleds);
 
 /**
  * @brief Apaga multiples leds
  * 
  * @param arrayleds 
- * @return char* 
  */
-char* LedsTurnOffMultiple(char *arrayleds);
+void LedsTurnOffMultiple(char *arrayleds);
 
 /**
  * @brief Lee el estado de un led

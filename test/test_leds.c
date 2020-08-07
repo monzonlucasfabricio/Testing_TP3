@@ -93,7 +93,7 @@ void test_prender_y_apagar_multiples_leds(void){
 
 //! @test Apagar multiples leds
 void test_apagar_multiples_leds(void){
-    char charleds[] = {1,5,16};
+    char charleds[] = {1,5,15};
     LedsTurnOnMultiple(charleds);
     LedsTurnOffMultiple(charleds);
     TEST_ASSERT_EQUAL_HEX16(0x0000,virtuales);

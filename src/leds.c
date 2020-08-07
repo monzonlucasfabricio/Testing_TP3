@@ -87,26 +87,22 @@ uint16_t LedsReadState(uint8_t led)
     return aux;
 }
 
-char *LedsTurnOnMultiple(char *arrayleds)
+void LedsTurnOnMultiple(char *arrayleds)
 {
     uint8_t i = 0;
     uint8_t sizearray = strlen(arrayleds);
-    char *result;
     for (i = 0; i <= (sizearray); i++)
     {
-        result = LedsTurnOn(arrayleds[i]);
+        LedsTurnOn(arrayleds[i]);
     }
-    return result;
 }
 
-char *LedsTurnOffMultiple(char *arrayleds)
+void LedsTurnOffMultiple(char *arrayleds)
 {
     uint8_t i = 0;
     uint8_t sizearray = strlen(arrayleds);
-    char *result;
     for (i = 0; i <= (sizearray); i++)
     {
-        result = LedsTurnOff(arrayleds[i]);
+        LedsTurnOff(arrayleds[i]);
     }
-    return result;
 }
