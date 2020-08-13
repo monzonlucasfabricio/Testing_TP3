@@ -13,17 +13,17 @@ void LedsCreate(uint16_t *direccion);
  * @brief Prende un led
  * 
  * @param led 
- * @return char* 
+ * @return uint8_t 
  */
-char* LedsTurnOn(uint8_t led);
+uint8_t LedsTurnOn(uint8_t led);
 
 /**
  * @brief Apaga un led
  * 
  * @param led 
- * @return char* 
+ * @return uint8_t 
  */
-char* LedsTurnOff(uint8_t led);
+uint8_t LedsTurnOff(uint8_t led);
 
 /**
  * @brief Prende todos los leds del puerto de 16 bits
@@ -36,20 +36,6 @@ void LedsTurnAllOn(void);
  * 
  */
 void LedsTurnAllOff(void);
-
-/**
- * @brief Prende multiples leds 
- * 
- * @param arrayleds  
- */
-void LedsTurnOnMultiple(char *arrayleds);
-
-/**
- * @brief Apaga multiples leds
- * 
- * @param arrayleds 
- */
-void LedsTurnOffMultiple(char *arrayleds);
 
 /**
  * @brief Lee el estado de un led

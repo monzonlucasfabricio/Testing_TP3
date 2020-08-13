@@ -64,39 +64,23 @@ void test_consultar_estado_de_un_led(void){
 
 //! @test Parametros son invalidos
 void test_parametros_son_invalidos(void){
-    char* result;
-    char* result1;
+    uint8_t result;
+    uint8_t result1;
     result = LedsTurnOn(22);
     result1 = LedsTurnOff(18);
-    TEST_ASSERT_EQUAL_STRING("Invalido",result);
-    TEST_ASSERT_EQUAL_STRING("Invalido",result1);
+    TEST_ASSERT_EQUAL(2,result);
+    TEST_ASSERT_EQUAL(2,result1);
 }
 
 
 //! @test Parametros en valores de borde
 void test_parametros_en_valores_de_borde(void){
-    char* result;
-    char* result1;
+    uint8_t result;
+    uint8_t result1;
     result = LedsTurnOn(1);
     result1 = LedsTurnOn(16);
-    TEST_ASSERT_EQUAL_STRING("Borde",result);
-    TEST_ASSERT_EQUAL_STRING("Borde",result1);
-}
-
-//! @test Prender multiples leds
-void test_prender_y_apagar_multiples_leds(void){
-    char charleds[] = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16};
-    LedsTurnOnMultiple(charleds);
-    TEST_ASSERT_EQUAL_HEX16(0xFFFF,virtuales);
-}
-
-
-//! @test Apagar multiples leds
-void test_apagar_multiples_leds(void){
-    char charleds[] = {1,5,15};
-    LedsTurnOnMultiple(charleds);
-    LedsTurnOffMultiple(charleds);
-    TEST_ASSERT_EQUAL_HEX16(0x0000,virtuales);
+    TEST_ASSERT_EQUAL(1,result);
+    TEST_ASSERT_EQUAL(1,result1);
 }
 
 

@@ -7,6 +7,9 @@
 #define LEDS_BIT_ON 1
 #define NUM_MAX_LEDS 16
 #define NUM_MIN_LEDS 1
+#define NOERROR 0;
+#define BORDE 1;
+#define INVALIDO 2;
 
 static uint16_t *puerto;
 
@@ -26,46 +29,46 @@ void LedsCreate(uint16_t *direccion)
     *puerto = LEDS_ALL_OFF;
 }
 
-char *LedsTurnOn(uint8_t led)
+uint8_t LedsTurnOn(uint8_t led)
 {
-    char *resultado = "Invalido";
+    uint8_t resultado = NOERROR;
     if (led <= NUM_MAX_LEDS)
     {
         *puerto |= BitMask(LedToBit(led));
         if (led == NUM_MIN_LEDS || led == (NUM_MAX_LEDS))
         {
-            resultado = "Borde";
+            resultado = BORDE;
         }
         else
         {
-            resultado = "OK";
+            resultado = NOERROR;
         }
     }
     else
     {
-        resultado = "Invalido";
+        resultado = INVALIDO;
     }
     return resultado;
 }
 
-char *LedsTurnOff(uint8_t led)
+uint8_t LedsTurnOff(uint8_t led)
 {
-    char *resultado = "Invalido";
+    uint8_t resultado = NOERROR;
     if (led <= NUM_MAX_LEDS)
     {
         *puerto &= ~BitMask(LedToBit(led));
         if (led == NUM_MIN_LEDS || led == (NUM_MAX_LEDS))
         {
-            resultado = "Borde";
+            resultado = BORDE;
         }
         else
         {
-            resultado = "OK";
+            resultado = NOERROR;
         }
     }
     else
     {
-        resultado = "Invalido";
+        resultado = INVALIDO;
     }
     return resultado;
 }
@@ -85,24 +88,4 @@ uint16_t LedsReadState(uint8_t led)
     uint16_t aux = *puerto;
     aux = aux &= BitMask(LedToBit(led));
     return aux;
-}
-
-void LedsTurnOnMultiple(char *arrayleds)
-{
-    uint8_t i = 0;
-    uint8_t sizearray = strlen(arrayleds);
-    for (i = 0; i <= (sizearray); i++)
-    {
-        LedsTurnOn(arrayleds[i]);
-    }
-}
-
-void LedsTurnOffMultiple(char *arrayleds)
-{
-    uint8_t i = 0;
-    uint8_t sizearray = strlen(arrayleds);
-    for (i = 0; i <= (sizearray); i++)
-    {
-        LedsTurnOff(arrayleds[i]);
-    }
 }
